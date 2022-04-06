@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+     name: simpledep
+     labels:
+        type: Prod
+spec:
+  replicas: 3
+  selector:
+      matchLabels:
+         type: prod
+  template:
+     metadata:
+       name: simple
+       labels:
+         type: prod
+     spec:
+        containers:
+          - name: hello
+            image: shubhampatil5128/project
+            command: ["/bin/sh", "-ec", "while :; do echo '.'; sleep 5 ; done"]
